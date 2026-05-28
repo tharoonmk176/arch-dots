@@ -1,0 +1,177 @@
+@import "colors.css";
+
+* {
+    font-family: "JetBrains Mono", "Noto Sans Mono", "Font Awesome 6 Free", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    border: none;
+    border-radius: 16px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: @text;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: alpha(@background, 0.65);
+    border: 1px solid alpha(@text, 0.2);
+    border-radius: 16px;
+    padding: 0px 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.modules-left {
+    margin-right: 12px;
+}
+
+.modules-right {
+    margin-left: 12px;
+}
+
+/* ── Workspaces ── */
+#workspaces {
+    padding: 0px 4px;
+}
+
+#workspaces button {
+    color: alpha(@text, 0.4);
+    background: transparent;
+    padding: 0 6px;
+    margin: 0 2px;
+    font-size: 11px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-radius: 12px;
+}
+
+#workspaces button.active {
+    color: @background;
+    background: @primary;
+    box-shadow: 0px 0px 8px alpha(@primary, 0.6);
+    padding: 0 12px;
+}
+
+#workspaces button.urgent {
+    color: @error;
+    background: alpha(@error, 0.15);
+}
+
+#workspaces button:hover {
+    color: @text;
+    background: alpha(@text, 0.15);
+}
+
+#workspaces button.active:hover {
+    color: @background;
+    background: @primary;
+}
+
+/* ── Center ── */
+#clock {
+    color: @readable_text;
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+#clock:hover {
+    color: @primary;
+}
+
+/* ── Right ── */
+#group-right {
+    padding: 0;
+}
+
+#custom-net,
+#cpu,
+#memory,
+#battery,
+#pulseaudio,
+#custom-cava,
+#tray {
+    color: @text;
+    padding: 2px 10px;
+    background: transparent;
+    border-radius: 12px;
+    margin: 0 2px;
+    transition: all 0.3s ease;
+}
+
+#custom-net:hover,
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#pulseaudio:hover,
+#custom-cava:hover {
+    background: alpha(@text, 0.1);
+    color: @readable_text;
+}
+
+#battery.warning {
+    color: #ff9900;
+}
+
+#battery.critical {
+    color: @error;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: alpha(@error, 0.2);
+        color: @error;
+    }
+}
+
+#battery.charging {
+    color: @success;
+}
+
+#pulseaudio.muted {
+    color: @error;
+}
+
+#custom-control {
+    color: @background;
+    background: @primary;
+    font-size: 14px;
+    padding: 0 10px;
+    margin-left: 6px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 8px alpha(@primary, 0.4);
+}
+
+#custom-control:hover {
+    background: @secondary;
+    box-shadow: 0px 0px 8px alpha(@secondary, 0.6);
+}
+
+#tray {
+    padding-left: 12px;
+}
+
+tooltip {
+    background-color: alpha(@background, 0.95);
+    border: 1px solid alpha(@text, 0.25);
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+tooltip label {
+    color: @text;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+}

@@ -1,0 +1,34 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    icon-theme: "Papirus-dark";
+    drun-display-format: "{icon} {name}";
+    drun-match-fields: "name,generic,exec";
+    drun-use-desktop-cache: true;
+    sorting-method: "fzf";
+    cycle: true;
+    font: "JetBrainsMono Nerd Font 11";
+    terminal: "kitty";
+}
+
+@theme "base.rasi"
+
+window {
+    width: 540px;
+}
+
+mainbox {
+    children: [ "inputbar", "listview" ];
+}
+
+listview {
+    lines: 8;
+    fixed-height: false;
+}
+
+element-icon {
+    size: 24px;
+    border-radius: 6px;
+}
+
+@import "colors.rasi"

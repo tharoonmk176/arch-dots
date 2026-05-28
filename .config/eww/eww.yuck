@@ -1,0 +1,155 @@
+(defpoll volume :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
+(defvar osd_icon "󰕾")
+
+;; System Variables for Control Center
+(defpoll wifi_status :interval "2s" "nmcli -t -f WIFI g | grep -q enabled && echo 'active' || echo ''")
+(defpoll wifi_name   :interval "5s" "nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2")
+(defpoll bt_status   :interval "2s" "bluetoothctl show | grep -q 'Powered: yes' && echo 'active' || echo ''")
+(defpoll battery     :interval "10s" "cat /sys/class/power_supply/BAT1/capacity")
+(defpoll battery_icon :interval "10s" "scripts/battery-icon.sh")
+(defpoll dnd_status   :interval "1s" "swaync-client -D")
+(defpoll brightness  :interval "1s" "brightnessctl i | grep -oP '\\(\\K\\d+(?=%)' || echo 0")
+
+;; New Variables for Enhanced CC
+(defpoll uptime :interval "1m" "uptime -p | sed -e 's/up //g'")
+(defpoll cpu :interval "2s" "scripts/cpu.sh")
+(defpoll ram :interval "5s" "scripts/ram.sh")
+(defpoll music_title :interval "2s" "playerctl metadata --format '{{title}}' || echo 'Nothing Playing'")
+(defpoll music_artist :interval "2s" "playerctl metadata --format '{{artist}}' || echo 'Silence'")
+(defpoll music_status :interval "1s" "playerctl status || echo 'Stopped'")
+
+;; Windows
+(defwindow osd
+  :monitor 0
+  :geometry (geometry :x "0%"
+                     :y "50px"
+                     :width "300px"
+                     :height "60px"
+                     :anchor "bottom center")
+  :stacking "fg"
+  :windowtype "notification"
+  :wm-ignore true
+  (osd_layout))
+
+(defwindow control_center
+  :monitor 0
+  :geometry (geometry :x "14px"
+                     :y "55px"
+                     :width "340px"
+                     :anchor "top right")
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore true
+  (control_center_layout))
+
+;; ── Widgets ──
+
+(defwidget osd_layout []
+  (box :class "osd-window"
+    (box :class "osd-container"
+         :space-evenly false
+         :valign "center"
+      (label :class "osd-icon"
+             :text osd_icon)
+      (scale :class "osd-bar"
+             :hexpand true
+             :value {volume == "" ? 0 : volume}
+             :min 0
+             :max 101
+             :active false)
+       (label :class "osd-value"
+              :text "${volume == "" ? 0 : volume}%"))))
+
+(defwidget control_center_layout []
+  (box :class "cc-window"
+       :orientation "vertical"
+       :space-evenly false
+
+    ;; Header with Profile and Uptime
+    (box :class "cc-header" :space-evenly false
+      (box :class "cc-profile-img" :valign "center")
+      (box :orientation "vertical" :space-evenly false :valign "center"
+        (label :class "cc-username" :text "Tharoon" :xalign 0)
+        (label :class "cc-uptime" :text "up ${uptime}" :xalign 0))
+      (box :hexpand true)
+      (button :class "cc-header-icon" :onclick "scripts/settings.sh" ""))
+
+    (box :class "cc-divider")
+
+    ;; Grid Toggles
+    (box :class "cc-grid" :spacing 10
+      (box :orientation "vertical" :spacing 10
+        (cc_grid_toggle :icon "󰤨" :label "Wi-Fi"
+                        :sub {wifi_status == "active" ? wifi_name : "Off"}
+                        :active {wifi_status == "active"}
+                        :onclick "scripts/wifi-toggle.sh")
+        (cc_grid_toggle :icon "󰂯" :label "Bluetooth"
+                        :sub {bt_status == "active" ? "On" : "Off"}
+                        :active {bt_status == "active"}
+                        :onclick "scripts/bt-toggle.sh"))
+      (box :orientation "vertical" :spacing 10
+        (cc_grid_toggle :icon "󰂛" :label "DND"
+                        :sub {dnd_status == "true" ? "On" : "Off"}
+                        :active {dnd_status == "true"}
+                        :onclick "scripts/dnd-toggle.sh")
+        (cc_grid_toggle :icon "󰍛" :label "Memory"
+                        :sub "${ram}%"
+                        :active false
+                        :onclick "kitty -e btop")))
+
+    (box :class "cc-divider")
+
+    ;; Sliders
+    (box :class "cc-section"
+         :orientation "vertical"
+         :spacing 12
+      (cc_slider_modern :icon "󰕾" :label "Volume"
+                        :value {volume == "" ? 0 : volume}
+                        :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")
+      (cc_slider_modern :icon "󰃟" :label "Brightness"
+                        :value {brightness == "" ? 0 : brightness}
+                        :onchange "brightnessctl set {}%"))
+
+    (box :class "cc-divider")
+
+    ;; Media Player
+    (box :class "cc-media" :space-evenly false
+      (box :class "cc-media-cover" :valign "center")
+      (box :orientation "vertical" :space-evenly false :valign "center" :hexpand true
+        (label :class "cc-media-title" :text music_title :limit-width 18 :xalign 0)
+        (label :class "cc-media-artist" :text music_artist :limit-width 22 :xalign 0))
+      (box :class "cc-media-controls" :valign "center" :spacing 12
+        (button :class "cc-media-btn" :onclick "playerctl previous" "󰒮")
+        (button :class "cc-media-play" :onclick "playerctl play-pause" {music_status == "Playing" ? "󰏤" : "󰐊"})
+        (button :class "cc-media-btn" :onclick "playerctl next" "󰒭")))
+
+    (box :class "cc-divider")
+
+    ;; Footer
+    (box :class "cc-footer"
+         :space-evenly false
+      (box :class "cc-battery-group" :space-evenly false
+        (label :class "cc-battery-icon" :text battery_icon)
+        (label :class "cc-battery-text" :text "${battery}%"))
+      (box :hexpand true)
+      (button :class "cc-power-btn" :onclick "scripts/power-menu.sh" "⏻"))))
+
+(defwidget cc_grid_toggle [icon label sub active onclick]
+  (button :class "cc-grid-button ${active ? 'active' : ''}" :onclick onclick
+    (box :orientation "vertical" :space-evenly false :valign "center"
+      (box :space-evenly false
+        (label :class "cc-grid-icon" :text icon)
+        (box :hexpand true)
+        (label :class "cc-grid-check" :text {active ? "󰄲" : ""}))
+      (label :class "cc-grid-label" :text label :xalign 0)
+      (label :class "cc-grid-sub" :text sub :xalign 0 :limit-width 12))))
+
+(defwidget cc_slider_modern [icon label value onchange]
+  (box :class "cc-slider-modern" :space-evenly false :valign "center"
+    (label :class "cc-slider-icon" :text icon)
+    (scale :class "cc-scale"
+           :hexpand true
+           :value value
+           :min 0
+           :max 101
+           :onchange onchange)))

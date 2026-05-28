@@ -1,0 +1,16 @@
+configuration {
+    modi: "dmenu";
+    show-icons: true;
+    cycle: true;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+@theme "base.rasi"
+
+window { width: 640px; }
+mainbox { padding: 12px; spacing: 10px; children: [ "inputbar", "listview" ]; }
+listview { columns: 3; lines: 2; spacing: 8px; fixed-height: false; }
+element { orientation: vertical; padding: 6px; background-color: @bg-alt; }
+element selected { background-color: @selected; }
+element-icon { size: 100px; border-radius: 6px; background-color: transparent; }
+element-text { horizontal-align: 0.5; font: "JetBrainsMono Nerd Font 9"; }

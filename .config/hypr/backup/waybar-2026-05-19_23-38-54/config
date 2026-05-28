@@ -1,0 +1,142 @@
+{
+  "layer": "top",
+  "position": "top",
+  "exclusive": true,
+  "height": 40,
+  "spacing": 6,
+  "margin-top": 10,
+  "margin-left": 16,
+  "margin-right": 16,
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "group/hardware",
+    "group/network",
+    "group/audio",
+    "group/media",
+    "clock",
+    "tray",
+    "custom/power"
+  ],
+  "custom/arch": {
+    "format": "󰣇",
+    "on-click": "rofi -show drun",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
+    },
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "all-outputs": true,
+    "show-special": false,
+    "persistent-workspaces": {
+      "*": 10
+    }
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 50,
+    "separate-outputs": false
+  },
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/cpu-icon",
+      "cpu",
+      "memory"
+    ]
+  },
+  "custom/cpu-icon": {
+    "format": "",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "interval": 5,
+    "tooltip": false
+  },
+  "memory": {
+    "format": "  {}%",
+    "interval": 10,
+    "tooltip": false
+  },
+  "group/network": {
+    "orientation": "horizontal",
+    "modules": [
+      "network"
+    ]
+  },
+  "network": {
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": "󰈀  Wired",
+    "format-disconnected": "󰤮",
+    "tooltip-format": "{essid}\n{ipaddr}/{cidr}\nSignal: {signalStrength}%",
+    "interval": 5,
+    "on-click": "kitty -e nmtui",
+    "on-click-right": "nmcli radio wifi toggle"
+  },
+  "group/audio": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio"
+    ]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟  Muted",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "scroll-step": 5,
+    "tooltip": false
+  },
+  "group/media": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/media-icon",
+      "custom/media-info"
+    ]
+  },
+  "custom/media-icon": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/media-info": {
+    "exec": "playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null | head -c 30 || echo ''",
+    "interval": 5,
+    "return-type": "json",
+    "format": " {}",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "tooltip": false
+  },
+  "clock": {
+    "format": "  {:%H:%M}",
+    "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n{:%H:%M:%S}",
+    "interval": 1,
+    "tooltip": true
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "custom/power": {
+    "format": "",
+    "on-click": "~/.config/hypr/scripts/power-menu.sh",
+    "tooltip": false
+  }
+}

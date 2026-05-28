@@ -1,0 +1,30 @@
+[mov-cli]
+version = 1
+debug = false
+player = "mpv"
+quality = "fhd"
+skip_update_checker = false
+auto_try_next_scraper = true
+hide_ip = true
+
+[mov-cli.ui]
+preview = true
+watch_options = true
+display_quality = true
+
+[mov-cli.plugins]
+test = "mov-cli-test"
+youtube = "mov-cli-youtube"
+films = "film-central"
+anime = "otaku-watcher"
+anime2 = "otaku-watcher-contrib"
+
+[mov-cli.scrapers]
+default = "films.vadapav"
+movie = "films.vadapav"
+series = "films.vadapav"
+anime = "anime.tokyoinsider"
+anime2 = "anime2.animepahe"
+
+[mov-cli.http]
+timeout = 15

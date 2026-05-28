@@ -1,0 +1,458 @@
+/* ============================================================
+   SWAYNC - TOKYO NIGHT THEME
+   Exact match to rofi base.rasi / colors.rasi
+   ============================================================ */
+
+/* --- Tokyo Night Colors --- */
+@define-color bg            #1a1b26;
+@define-color bg-alt        #24283b;
+@define-color fg            #c0caf5;
+@define-color fg-dim        #565f89;
+@define-color accent        #7aa2f7;
+@define-color accent2       #bb9af7;
+@define-color selected      #7aa2f7;
+@define-color selected-fg   #1a1b26;
+@define-color border        #7aa2f7;
+@define-color urgent        #f7768e;
+
+/* --- Global Reset --- */
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+  color: @fg;
+}
+
+.blank-window {
+  background: transparent;
+}
+
+/* ============================================================
+   CONTROL CENTER
+   rofi window: 2px border, 16px radius, @bg
+   ============================================================ */
+
+.control-center {
+  background: @bg;
+  border: 2px solid @border;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+/* ============================================================
+   QUICK SETTINGS GRID
+   rofi button: @bg-alt bg, 10px radius, 1px transparent border
+   ============================================================ */
+
+.widget-buttons-grid {
+  margin: 0 0 10px 0;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: @bg-alt;
+  color: @fg-dim;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  min-width: 100px;
+  min-height: 48px;
+  margin: 4px;
+  padding: 0;
+  font-size: 20px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  color: @fg;
+  border-color: @accent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:checked {
+  background: @selected;
+  color: @selected-fg;
+  border: 2px solid @accent2;
+}
+
+/* ============================================================
+   VOLUME WIDGET
+   rofi inputbar: @bg-alt bg, 1px @accent border, 10px radius
+   ============================================================ */
+
+.widget-volume {
+  background: @bg-alt;
+  border: 1px solid @accent;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 0 0 8px 0;
+}
+
+.widget-volume > box > label {
+  color: @accent;
+  font-size: 18px;
+  min-width: 24px;
+  margin: 0 6px 0 0;
+}
+
+.widget-volume row image {
+  -gtk-icon-size: 16px;
+  color: @fg-dim;
+}
+
+.per-app-volume {
+  background: alpha(@bg, 0.5);
+  margin: 4px 0 0 0;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   BACKLIGHT WIDGET
+   ============================================================ */
+
+.widget-backlight {
+  background: @bg-alt;
+  border: 1px solid @accent;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 0 0 8px 0;
+}
+
+.widget-backlight > box > label {
+  color: @accent;
+  font-size: 18px;
+  min-width: 24px;
+  margin: 0 6px 0 0;
+}
+
+/* ============================================================
+   SLIDERS
+   ============================================================ */
+
+scale trough {
+  background: @fg-dim;
+  border-radius: 100px;
+  min-height: 5px;
+  margin: 0 4px 0 0;
+}
+
+scale highlight {
+  background: @accent;
+  border-radius: 100px;
+  min-height: 5px;
+}
+
+scale slider {
+  background: @accent;
+  border-radius: 100px;
+  min-width: 16px;
+  min-height: 16px;
+  margin: -5px;
+  border: 2px solid @bg;
+}
+
+scale slider:hover {
+  background: @accent2;
+}
+
+/* ============================================================
+   MEDIA PLAYER
+   rofi message: @bg-alt bg, 1px @accent border, 10px radius
+   ============================================================ */
+
+.widget-mpris {
+  background: @bg-alt;
+  border: 1px solid @accent;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 0 10px 0;
+}
+
+.widget-mpris .widget-mpris-player {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay {
+  padding: 0;
+  background: transparent;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-album-art {
+  border-radius: 8px;
+  margin: 0 0 8px 0;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: @fg;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-subtitle {
+  font-size: 11px;
+  color: @fg-dim;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay button {
+  color: @fg-dim;
+  border-radius: 8px;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay button:hover {
+  color: @fg;
+  background: alpha(@accent, 0.2);
+}
+
+.widget-mpris > box > button {
+  color: @fg-dim;
+  border-radius: 8px;
+}
+
+.widget-mpris > box > button:hover {
+  color: @fg;
+  background: alpha(@accent, 0.2);
+}
+
+/* ============================================================
+   NOTIFICATIONS HEADER
+   ============================================================ */
+
+.widget-title {
+  margin: 6px 0 8px 0;
+  padding: 8px 0 0 0;
+  border-top: 1px solid @accent;
+}
+
+.widget-title > label {
+  font-size: 13px;
+  font-weight: 600;
+  color: @fg;
+  margin: 0 6px 0 0;
+}
+
+.widget-title > button {
+  background: @bg-alt;
+  color: @fg-dim;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  margin: 0;
+}
+
+.widget-title > button:hover {
+  color: @fg;
+  border-color: @accent;
+}
+
+/* ============================================================
+   NOTIFICATIONS
+   rofi element: @bg-alt bg, 10px radius
+   hover: @selected bg, @selected-fg text, 2px @accent2 border
+   ============================================================ */
+
+.notification-row {
+  background: transparent;
+}
+
+.notification-row .notification-background {
+  padding: 2px 0;
+}
+
+.notification-row .notification-background .notification {
+  background: @bg-alt;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.notification-row .notification-background .notification.critical {
+  border-color: @urgent;
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+  padding: 8px;
+  margin: 0;
+  border-radius: 10px;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover {
+  background: @selected;
+  border-color: @accent2;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content {
+  background: transparent;
+  padding: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .image {
+  -gtk-icon-size: 40px;
+  border-radius: 6px;
+  margin: 0 6px 0 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .app-icon {
+  -gtk-icon-size: 14px;
+  margin: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box label {
+  filter: none;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  font-size: 12px;
+  font-weight: 600;
+  color: @fg;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover .notification-content .text-box .summary {
+  color: @selected-fg;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+  font-size: 10px;
+  color: @fg-dim;
+  margin: 0 0 0 4px;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover .notification-content .text-box .time {
+  color: alpha(@selected-fg, 0.7);
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+  font-size: 11px;
+  color: @fg-dim;
+  margin: 2px 0 0 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover .notification-content .text-box .body {
+  color: alpha(@selected-fg, 0.8);
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content progressbar trough {
+  background: @fg-dim;
+  border-radius: 100px;
+  min-height: 4px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content progressbar progress {
+  background: @accent;
+  border-radius: 100px;
+  min-height: 4px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .body-image {
+  margin: 4px 0 0 0;
+  border-radius: 6px;
+}
+
+/* Notification Actions */
+.notification-row .notification-background .notification .notification-action {
+  margin: 0 4px 4px 4px;
+  padding: 0;
+}
+
+.notification-row .notification-background .notification .notification-action > button {
+  background: @bg-alt;
+  color: @fg-dim;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.notification-row .notification-background .notification .notification-action > button:hover {
+  background: @selected;
+  color: @selected-fg;
+  border-color: @accent2;
+}
+
+/* Close Button */
+.close-button {
+  background: transparent;
+  color: @fg-dim;
+  border-radius: 100%;
+  padding: 0;
+  margin: 4px;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.close-button:hover {
+  background: @urgent;
+  color: @selected-fg;
+}
+
+/* Notification Group */
+.notification-group {
+  margin: 2px 0;
+}
+
+.notification-group .notification-group-close-button .close-button {
+  margin: 4px;
+}
+
+.notification-group .notification-group-buttons,
+.notification-group .notification-group-headers {
+  margin: 0 4px;
+  color: @fg;
+}
+
+.notification-group .notification-group-headers .notification-group-icon {
+  color: @accent;
+  -gtk-icon-size: 20px;
+}
+
+.notification-group .notification-group-headers .notification-group-header {
+  color: @fg;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.notification-group .notification-group-buttons > button {
+  background: @bg-alt;
+  color: @fg-dim;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.notification-group .notification-group-buttons > button:hover {
+  background: @selected;
+  color: @selected-fg;
+  border-color: @accent2;
+}
+
+.notification-group.collapsed:not(:hover) {
+  opacity: 0.5;
+}
+
+/* ============================================================
+   FLOATING NOTIFICATIONS
+   ============================================================ */
+
+.floating-notifications {
+  background: transparent;
+}
+
+.floating-notifications .notification {
+  background: @bg;
+  border: 2px solid @border;
+  border-radius: 16px;
+}
+
+/* ============================================================
+   WIDGET BASE
+   ============================================================ */
+
+.widget {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}

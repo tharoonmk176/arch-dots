@@ -1,0 +1,125 @@
+@import "colors.rasi"
+
+* {
+    bg:           @matugen-background;
+    bg-alt:       @matugen-surface;
+    fg:           @matugen-foreground;
+    fg-dim:       @matugen-foreground;
+    accent:       @matugen-accent;
+    accent2:      @matugen-accent;
+    selected:     @matugen-accent;
+    selected-fg:  @matugen-on-accent;
+    border:       @matugen-accent;
+    urgent:       #d03838;
+
+    font:         "JetBrainsMono Nerd Font 11";
+    radius:       14px;
+    radius-sm:    10px;
+    padding:      10px;
+}
+
+window {
+    location:         center;
+    anchor:           center;
+    width:            460px;
+    border:           2px;
+    border-radius:    @radius;
+    border-color:     @border;
+    background-color: @bg;
+    padding:          0;
+}
+
+mainbox {
+    padding:          @padding;
+    spacing:          10px;
+    background-color: transparent;
+    children:         [ "inputbar", "listview" ];
+}
+
+inputbar {
+    padding:          10px 14px;
+    border-radius:    @radius-sm;
+    background-color: @bg-alt;
+    border:           1px;
+    border-color:     @accent;
+    spacing:          10px;
+    children:         [ "prompt", "entry" ];
+}
+
+prompt {
+    text-color: @accent;
+    font:       "JetBrainsMono Nerd Font 12";
+}
+
+entry {
+    placeholder:        "Search applications...";
+    placeholder-color:  @fg-dim;
+    text-color:         @fg;
+    background-color:   transparent;
+    font:               "JetBrainsMono Nerd Font 12";
+}
+
+listview {
+    columns:          1;
+    lines:            8;
+    spacing:          4px;
+    scrollbar:        false;
+    background-color: transparent;
+    dynamic:          true;
+    fixed-height:     false;
+}
+
+element {
+    padding:          8px 14px;
+    border-radius:    @radius-sm;
+    background-color: transparent;
+    text-color:       @fg;
+    font:             @font;
+}
+
+element selected {
+    background-color: @selected;
+    text-color:       @selected-fg;
+    border:           2px;
+    border-color:     @accent2;
+}
+
+element-icon {
+    size:             24px;
+    margin:           0 10px 0 0;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       @fg;
+    vertical-align:   0.5;
+}
+
+message {
+    border:           1px;
+    border-color:     @accent;
+    border-radius:    @radius-sm;
+    background-color: @bg-alt;
+    margin:           4px 0;
+}
+
+textbox {
+    padding:    6px;
+    text-color: @fg;
+}
+
+button {
+    padding:          6px 12px;
+    border-radius:    @radius-sm;
+    background-color: @bg-alt;
+    text-color:       @fg-dim;
+    border:           1px;
+    border-color:     transparent;
+}
+
+button selected {
+    background-color: @accent;
+    text-color:       @selected-fg;
+    border-color:     @accent2;
+}

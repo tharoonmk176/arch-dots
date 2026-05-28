@@ -1,0 +1,219 @@
+* {
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: #c8d8e8;
+    background: transparent;
+}
+
+window#waybar {
+    background: rgba(12, 18, 24, 0.85);
+    border: 1px solid rgba(56, 160, 216, 0.15);
+    border-radius: 16px;
+    padding: 0 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Launcher ── */
+
+#custom-arch {
+    font-size: 16px;
+    padding: 0 10px;
+    color: #38a0d8;
+    text-shadow: 0 0 8px rgba(56, 160, 216, 0.3);
+}
+
+#custom-arch:hover {
+    color: #50c0a0;
+}
+
+/* ── Workspaces ── */
+
+#workspaces {
+    padding: 0 8px;
+}
+
+#workspaces button {
+    padding: 0 4px;
+    margin: 4px 2px;
+    border-radius: 50%;
+    color: #98b4c8;
+    background: transparent;
+    transition: all 200ms ease;
+    min-width: 10px;
+}
+
+#workspaces button.active {
+    color: #38a0d8;
+    background: rgba(56, 160, 216, 0.15);
+    min-width: 24px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(56, 160, 216, 0.2);
+}
+
+#workspaces button:hover {
+    color: #c8d8e8;
+    background: rgba(56, 160, 216, 0.08);
+}
+
+/* ── Window Title ── */
+
+#window {
+    padding: 0 12px;
+    color: #e0e8f0;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ── Groups (The Magic) ── */
+
+#group-hardware,
+#group-network,
+#group-audio,
+#group-media {
+    background: rgba(22, 34, 46, 0.45);
+    border: 1px solid rgba(56, 160, 216, 0.08);
+    border-radius: 12px;
+    margin: 0 4px;
+    padding: 0 8px;
+    transition: all 300ms ease;
+}
+
+#group-hardware:hover,
+#group-network:hover,
+#group-audio:hover,
+#group-media:hover {
+    background: rgba(56, 160, 216, 0.12);
+    border-color: rgba(56, 160, 216, 0.25);
+    box-shadow: 0 0 10px rgba(56, 160, 216, 0.1);
+}
+
+/* Hide text inside groups by default */
+#cpu,
+#memory,
+#custom-media-info {
+    color: transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 0px;
+    transition: all 300ms ease;
+}
+
+/* Show text on hover */
+#group-hardware:hover #cpu,
+#group-hardware:hover #memory,
+#group-media:hover #custom-media-info {
+    color: #c8d8e8;
+    margin: 0 4px;
+    padding: 0 4px;
+    font-size: 12px;
+}
+
+/* Icons inside groups always visible */
+#custom-cpu-icon,
+#custom-media-icon {
+    padding: 0 4px;
+    color: #98b4c8;
+}
+
+#group-hardware:hover #custom-cpu-icon,
+#group-media:hover #custom-media-icon {
+    color: #38a0d8;
+}
+
+/* ── Standard Modules ── */
+
+#network {
+    padding: 0 8px;
+    color: #98b4c8;
+}
+
+#network:hover {
+    color: #38a0d8;
+}
+
+#pulseaudio {
+    padding: 0 8px;
+    color: #98b4c8;
+}
+
+#pulseaudio:hover {
+    color: #38a0d8;
+}
+
+#pulseaudio.muted {
+    color: #d03838;
+}
+
+#network.disconnected {
+    color: #d03838;
+}
+
+/* ── Clock ── */
+
+#clock {
+    padding: 0 12px;
+    color: #e0e8f0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* ── Tray ── */
+
+#tray {
+    padding: 0 6px;
+}
+
+#tray menu {
+    background: rgba(12, 18, 24, 0.95);
+    border: 1px solid rgba(56, 160, 216, 0.15);
+    border-radius: 12px;
+    color: #c8d8e8;
+    padding: 4px;
+}
+
+#tray menuitem:hover {
+    background: rgba(56, 160, 216, 0.12);
+}
+
+/* ── Notification & Power ── */
+
+#custom-notification {
+    padding: 0 6px;
+    font-size: 13px;
+    color: #98b4c8;
+}
+
+#custom-notification:hover {
+    color: #38a0d8;
+}
+
+#custom-power {
+    padding: 0 8px;
+    font-size: 13px;
+    color: #98b4c8;
+    border-radius: 10px;
+    transition: all 200ms ease;
+}
+
+#custom-power:hover {
+    color: #d03838;
+    background: rgba(208, 56, 56, 0.1);
+}
+
+/* ── Tooltips ── */
+
+tooltip {
+    background: rgba(12, 18, 24, 0.95);
+    border: 1px solid rgba(56, 160, 216, 0.15);
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+tooltip label {
+    color: #c8d8e8;
+}

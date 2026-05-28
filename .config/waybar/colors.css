@@ -1,0 +1,14 @@
+@define-color background #0c1218;
+@define-color surface #16222e;
+@define-color surface_container #16222e;
+@define-color text #38a0d8;
+@define-color primary #38a0d8;
+@define-color readable_text #c8d8e8;
+@define-color on_text #98b4c8;
+@define-color secondary #50c0a0;
+@define-color tertiary #8088d0;
+@define-color error #d03838;
+@define-color warning #d0b038;
+@define-color success #50c0a0;
+@define-color chip #16222e;
+@define-color chip_border #16222e;

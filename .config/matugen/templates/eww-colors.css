@@ -1,0 +1,2 @@
+@define-color bg-selected {{colors.primary.default.rgb}};
+@define-color text-color {{colors.on_surface.default.rgb}};

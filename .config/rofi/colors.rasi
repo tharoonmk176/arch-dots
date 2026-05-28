@@ -1,0 +1,43 @@
+* {
+    matugen-background: #0c1218;
+    matugen-surface: #16222e;
+    matugen-foreground: #c8d8e8;
+    matugen-accent: #38a0d8;
+    matugen-on-accent: #98b4c8;
+    matugen-error: #d03838;
+}
+
+window {
+    background-color: @matugen-background;
+    border-color: @matugen-accent;
+}
+
+mainbox,
+listview,
+inputbar {
+    background-color: @matugen-background;
+}
+
+element {
+    text-color: @matugen-foreground;
+}
+
+element normal normal,
+element selected normal,
+element alternate normal {
+    text-color: @matugen-foreground;
+}
+
+element selected {
+    background-color: @matugen-accent;
+    text-color: @matugen-on-accent;
+}
+
+entry {
+    text-color: @matugen-foreground;
+}
+
+prompt,
+textbox-prompt-colon {
+    text-color: @matugen-accent;
+}

@@ -1,0 +1,273 @@
+@import "colors.css";
+
+* {
+  all: unset;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+window {
+  background-color: transparent;
+}
+
+/* ── OSD ── */
+
+.osd-window {
+  background-color: transparent;
+  border: 1px solid alpha(@text, 0.08);
+  border-radius: 100px;
+  padding: 0 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.osd-container {
+  min-height: 48px;
+  background-color: alpha(@background, 0.85);
+  border-radius: 100px;
+  padding: 0 4px;
+}
+
+.osd-icon {
+  font-size: 20px;
+  color: @readable_text;
+  margin-right: 14px;
+}
+
+.osd-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: @readable_text;
+  margin-left: 14px;
+  min-width: 30px;
+}
+
+scale trough {
+  background-color: alpha(@text, 0.12);
+  border-radius: 100px;
+  min-height: 4px;
+}
+
+scale highlight {
+  background-color: @primary;
+  border-radius: 100px;
+}
+
+/* ── Control Center (Modern/Glass Style) ── */
+
+.cc-window {
+  background-color: alpha(@background, 0.92);
+  border: 1px solid alpha(@text, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  min-width: 340px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.cc-divider {
+  background-color: alpha(@text, 0.05);
+  min-height: 1px;
+  margin: 16px 4px;
+}
+
+/* Header */
+.cc-header {
+  padding: 4px 8px;
+}
+
+.cc-profile-img {
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 14px;
+  background-image: url("/home/tharoon/Pictures/profile.png"), linear-gradient(45deg, @primary, @secondary);
+  background-size: cover;
+  background-color: @primary;
+  margin-right: 14px;
+  border: 2px solid alpha(@text, 0.05);
+}
+
+.cc-username {
+  font-size: 16px;
+  font-weight: 700;
+  color: @readable_text;
+}
+
+.cc-uptime {
+  font-size: 12px;
+  color: alpha(@readable_text, 0.5);
+}
+
+.cc-header-icon {
+  font-size: 20px;
+  color: alpha(@readable_text, 0.6);
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.cc-header-icon:hover {
+  background-color: alpha(@text, 0.1);
+  color: @readable_text;
+}
+
+/* Grid Buttons */
+.cc-grid {
+  padding: 4px;
+}
+
+.cc-grid-button {
+  background-color: alpha(@text, 0.03);
+  border-radius: 16px;
+  padding: 16px;
+  min-width: 145px;
+  border: 1px solid alpha(@text, 0.05);
+}
+
+.cc-grid-button:hover {
+  background-color: alpha(@text, 0.08);
+  border: 1px solid alpha(@text, 0.1);
+}
+
+.cc-grid-button.active {
+  background-color: @primary;
+  color: @background;
+  border: 1px solid @primary;
+  box-shadow: 0 4px 20px alpha(@primary, 0.4);
+}
+
+.cc-grid-icon {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.cc-grid-check {
+  font-size: 14px;
+}
+
+.cc-grid-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cc-grid-sub {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.cc-grid-button.active .cc-grid-sub {
+  color: @background;
+  opacity: 0.8;
+}
+
+/* Modern Sliders */
+.cc-slider-modern {
+  background-color: alpha(@text, 0.05);
+  padding: 12px 16px;
+  border-radius: 16px;
+}
+
+.cc-slider-icon {
+  font-size: 18px;
+  color: @primary;
+  margin-right: 16px;
+}
+
+.cc-scale trough {
+  min-height: 8px;
+  border-radius: 100px;
+  background-color: alpha(@text, 0.1);
+}
+
+.cc-scale highlight {
+  background-color: @primary;
+  border-radius: 100px;
+}
+
+/* Media Player */
+.cc-media {
+  background-color: alpha(@text, 0.04);
+  padding: 12px 16px;
+  border-radius: 20px;
+  border: 1px solid alpha(@text, 0.05);
+}
+
+.cc-media-cover {
+  min-width: 50px;
+  min-height: 50px;
+  background-color: @secondary;
+  border-radius: 12px;
+  margin-right: 14px;
+  background-image: url("/home/tharoon/Pictures/music.png"), linear-gradient(135deg, @secondary, @tertiary);
+  background-size: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cc-media-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: @readable_text;
+  margin-bottom: 2px;
+}
+
+.cc-media-artist {
+  font-size: 12px;
+  color: alpha(@readable_text, 0.6);
+}
+
+.cc-media-controls {
+  color: @readable_text;
+}
+
+.cc-media-btn {
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 50px;
+}
+
+.cc-media-btn:hover {
+  background-color: alpha(@text, 0.08);
+}
+
+.cc-media-play {
+  font-size: 26px;
+  color: @primary;
+  padding: 4px 8px;
+  border-radius: 50px;
+}
+
+.cc-media-play:hover {
+  color: @secondary;
+}
+
+/* Footer */
+.cc-footer {
+  padding: 4px 8px;
+}
+
+.cc-battery-group {
+  background-color: alpha(@text, 0.05);
+  padding: 6px 14px;
+  border-radius: 12px;
+}
+
+.cc-battery-icon {
+  font-size: 16px;
+  color: @success;
+  margin-right: 8px;
+}
+
+.cc-battery-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: @readable_text;
+}
+
+.cc-power-btn {
+  background-color: alpha(@error, 0.15);
+  color: @error;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 18px;
+}
+
+.cc-power-btn:hover {
+  background-color: @error;
+  color: @background;
+}

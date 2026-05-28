@@ -1,0 +1,56 @@
+/* GTK4 color overrides — gestionado por theme-changer */
+
+/* theme-changer: begin */
+/* libadwaita */
+@define-color accent_color                    #58d147;
+@define-color accent_bg_color                 #58d147;
+@define-color accent_fg_color                 #052726;
+@define-color window_bg_color                 #052726;
+@define-color window_fg_color                 #dedede;
+@define-color view_bg_color                   #0c3c39;
+@define-color view_fg_color                   #dedede;
+@define-color headerbar_bg_color              #073634;
+@define-color headerbar_fg_color              #dedede;
+@define-color headerbar_backdrop_color        #052726;
+@define-color headerbar_border_color          #073634;
+@define-color headerbar_shade_color           #010f0e;
+@define-color headerbar_darker_shade_color    #010f0e;
+@define-color sidebar_bg_color                #073634;
+@define-color sidebar_fg_color                #dedede;
+@define-color sidebar_backdrop_color          #052726;
+@define-color sidebar_border_color            #073634;
+@define-color sidebar_shade_color             #010f0e;
+@define-color secondary_sidebar_bg_color      #052726;
+@define-color secondary_sidebar_fg_color      #dedede;
+@define-color secondary_sidebar_backdrop_color #052726;
+@define-color secondary_sidebar_border_color  #073634;
+@define-color secondary_sidebar_shade_color   #010f0e;
+@define-color card_bg_color                   #0c3c39;
+@define-color card_fg_color                   #dedede;
+@define-color card_shade_color                #010f0e;
+@define-color popover_bg_color                #124b48;
+@define-color popover_fg_color                #dedede;
+@define-color popover_shade_color             #010f0e;
+@define-color dialog_bg_color                 #0c3c39;
+@define-color dialog_fg_color                 #dedede;
+@define-color thumbnail_bg_color              #124b48;
+@define-color thumbnail_fg_color              #dedede;
+@define-color shade_color                     #010f0e;
+@define-color scrollbar_outline_color         #010f0e;
+
+/* GTK legacy */
+@define-color theme_bg_color              #052726;
+@define-color theme_base_color            #0c3c39;
+@define-color theme_fg_color              #dedede;
+@define-color theme_text_color            #dedede;
+@define-color theme_selected_bg_color     #58d147;
+@define-color theme_selected_fg_color     #052726;
+@define-color theme_unfocused_bg_color    #052726;
+@define-color theme_unfocused_fg_color    #bdc3c7;
+@define-color insensitive_fg_color        #bdc3c7;
+@define-color borders                     #073634;
+@define-color content_view_bg             #0c3c39;
+@define-color error_color                 #da4453;
+@define-color success_color               #27ae60;
+@define-color warning_color               #c9ce3b;
+/* theme-changer: end */

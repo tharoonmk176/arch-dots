@@ -1,0 +1,14 @@
+configuration {
+    modi: "dmenu";
+    show-icons: false;
+    cycle: true;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+@theme "base.rasi"
+
+window { width: 280px; }
+mainbox { children: [ "inputbar", "listview" ]; }
+inputbar { children: [ "entry" ]; }
+entry { placeholder: "action…"; }
+listview { lines: 4; dynamic: false; fixed-height: false; }

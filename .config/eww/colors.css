@@ -1,0 +1,8 @@
+@define-color background rgb(12, 18, 24);
+@define-color surface rgb(22, 34, 46);
+@define-color primary rgb(56, 160, 216);
+@define-color secondary rgb(56, 160, 216);
+@define-color text rgb(200, 216, 232);
+@define-color readable_text rgb(200, 216, 232);
+@define-color error rgb(255, 100, 100);
+@define-color success rgb(100, 255, 100);

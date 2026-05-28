@@ -1,0 +1,13 @@
+configuration {
+    modi: "dmenu";
+    show-icons: false;
+    cycle: true;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+@theme "base.rasi"
+
+window { width: 560px; }
+mainbox { children: [ "inputbar", "listview" ]; }
+entry { placeholder: "search windows…"; }
+listview { lines: 8; scrollbar: true; scrollbar-width: 4px; scrollbar-color: @accent; scrollbar-background-color: @bg-alt; fixed-height: false; }

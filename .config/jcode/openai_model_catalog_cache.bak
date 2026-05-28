@@ -1,0 +1,1 @@
+{"scopes":{"default":{"models":["codex-auto-review","gpt-5.2","gpt-5.3-codex","gpt-5.4","gpt-5.4-mini","gpt-5.5"],"context_limits":{"codex-auto-review":272000,"gpt-5.2":272000,"gpt-5.5":272000,"gpt-5.3-codex":272000,"gpt-5.4-mini":272000,"gpt-5.4":272000},"observed_at_unix_secs":1779394191}}}

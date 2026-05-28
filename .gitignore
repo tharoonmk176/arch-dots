@@ -1,0 +1,27 @@
+# Ignore common cache and temporary folders
+Cache/
+Code Cache/
+IndexedDB/
+Local Storage/
+Session Storage/
+Cookies/
+Crashpad/
+DawnGraphiteCache/
+DawnWebGPUCache/
+GPUCache/
+Dictionaries/
+.tmp/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.log
+
+# Ignore large browser/application profiles
+google-chrome/
+discord/
+Code/
+Cursor/
+BraveSoftware/
+mozilla/
+Antigravity/
+opencode/
